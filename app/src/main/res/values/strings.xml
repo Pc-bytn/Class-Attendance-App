@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">VTA-VEYANGODA</string>
+    <string name="welcome_text">Welcome</string>
+    <string name="to_vta_veyangoda">to VTA Veyangoda</string>
+    <string name="instructor_register">Instructor Register</string>
+    <string name="student_register">Student Register</string>
+    <string name="instructor_login">Instructor Login</string>
+    <string name="student_login">Student Login</string>
 </resources>
