@@ -6,4 +6,8 @@
     <string name="student_register">Student Register</string>
     <string name="instructor_login">Instructor Login</string>
     <string name="student_login">Student Login</string>
+    <string name="instructor_logo">instructor logo</string>
+    <string name="student_logo">student logo</string>
+    <string name="instructor">Instructor</string>
+    <string name="student">Student</string>
 </resources>
