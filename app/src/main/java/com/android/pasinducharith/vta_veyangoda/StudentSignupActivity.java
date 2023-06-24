@@ -1,5 +1,6 @@
 package com.android.pasinducharith.vta_veyangoda;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -29,6 +30,13 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +45,11 @@ public class StudentSignupActivity extends AppCompatActivity {
 
     EditText fName, nameWithInitials, address, nicNo, phoneNo, email, pswFirst, pswSecond;
     Button btnRegister;
+
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+
+    private ProgressDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +71,13 @@ public class StudentSignupActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addItemToSheet();
+                registerStudents();
             }
         });
 
     }
 
-    public void addItemToSheet() {
+    public void registerStudents() {
         //Data sending Method
 
         String stdFname = fName.getText().toString().trim();
@@ -83,20 +96,25 @@ public class StudentSignupActivity extends AppCompatActivity {
                 && stdFirstPsw.equals(stdSecondpsw)) {
             String psw = stdSecondpsw;
 
-            final ProgressDialog loading = ProgressDialog.show(this, "Registering", "Please wait");
+            loading = new ProgressDialog(StudentSignupActivity.this);
+            loading.setMessage("Registering");
+            loading.setCancelable(false);
+            loading.show();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    "https://script.google.com/macros/s/AKfycbwHd8vRD23VUhiDk5uzUiuEcOp-7-hWzvH98Qo99qc8Wr2OQev1HMAy83VsaILDC2s7/exec",
+                    "https://script.google.com/macros/s/AKfycbzmHsMCbLbts1_cWjOD6fxf4kEUKt9gYDWF5jHbCHiy17C5Ri3AKqI6A24NI1s3GGW7/exec",
                     new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    loading.dismiss();
-                    Toast.makeText(StudentSignupActivity.this, response, Toast.LENGTH_SHORT).show();
-                }
-            }, new Response.ErrorListener() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            loading.dismiss();
+
+                            Toast.makeText(StudentSignupActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    loading.dismiss();
                 }
             }) {
                 protected Map<String, String> getParams() {
@@ -123,6 +141,42 @@ public class StudentSignupActivity extends AppCompatActivity {
             RequestQueue queue = Volley.newRequestQueue(this);
 
             queue.add(stringRequest);
+
+            // FIREBASE SECTION ////////////////////////////
+            fAuth = FirebaseAuth.getInstance();
+            fStore = FirebaseFirestore.getInstance();
+
+            fAuth.createUserWithEmailAndPassword(stdEmail, stdFirstPsw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    FirebaseUser user = fAuth.getCurrentUser();
+                    Toast.makeText(StudentSignupActivity.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
+                    DocumentReference df = fStore.collection("Users").document(user.getUid());
+
+                    Map<String, Object> userInfo = new HashMap<>();
+                    userInfo.put("nicNo", stdnicNo);
+                    userInfo.put("isUser", "1");
+
+                    df.set(userInfo);
+
+                    if (!isFinishing() && loading.isShowing()) {
+                        loading.dismiss();
+                    }
+
+                    startActivity(new Intent(getApplicationContext(), StudentHomepageActivity.class));
+                    finish();
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(StudentSignupActivity.this, "Failed to register.", Toast.LENGTH_SHORT).show();
+                    if (!isFinishing() && loading.isShowing()) {
+                        loading.dismiss();
+                    }
+                }
+            });
         } else {
             Toast.makeText(this, "Password Is Not Matching Or All Fields Not Filled", Toast.LENGTH_SHORT).show();
         }

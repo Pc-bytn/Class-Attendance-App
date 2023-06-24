@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VTA-VEYANGODA</string>
+    <string name="app_name">Attendance Marker</string>
     <string name="welcome_text">Welcome</string>
     <string name="to_vta_veyangoda">to VTA Veyangoda</string>
     <string name="instructor_register">Instructor Register</string>
@@ -25,5 +25,5 @@
     <string name="enter_your_nic">Enter Your NIC Number</string>
     <string name="instructor_log_in">Instructor Log in</string>
     <string name="student_log_in">Student Log in</string>
-    <string name="save">Save</string>
+    <string name="attendance">Mark Attendance</string>
 </resources>
