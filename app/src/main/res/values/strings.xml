@@ -26,4 +26,6 @@
     <string name="instructor_log_in">Instructor Log in</string>
     <string name="student_log_in">Student Log in</string>
     <string name="attendance">Mark Attendance</string>
+    <string name="log_out">Log out</string>
+    <string name="subject">Enter Your Subject</string>
 </resources>

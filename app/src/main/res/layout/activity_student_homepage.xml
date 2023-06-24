@@ -8,7 +8,7 @@
     tools:context=".StudentHomepageActivity">
 
     <Button
-        android:id="@+id/saveBarCode"
+        android:id="@+id/saveAttandance"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:text="@string/attendance"
@@ -21,6 +21,19 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logOutStd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="@string/log_out"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveAttandance" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

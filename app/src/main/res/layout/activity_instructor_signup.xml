@@ -7,6 +7,20 @@
     android:background="@drawable/signupimage"
     tools:context=".InstructorSignupActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instructor_register"
+        android:textColor="#EF6C00"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/signupImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
     <ImageView
         android:id="@+id/signupImage"
         android:layout_width="70dp"
@@ -34,7 +48,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/fullName"
+                android:id="@+id/insFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -42,11 +56,11 @@
                 android:hint="@string/signup_full_name"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
 
             <EditText
-                android:id="@+id/initialName"
+                android:id="@+id/insInitialName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -57,41 +71,19 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/address"
+                android:id="@+id/course"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
-                android:hint="@string/enter_your_address"
+                android:hint="@string/subject"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:textSize="20sp"/>
-
-            <EditText
-                android:id="@+id/nic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:hint="@string/enter_your_nic"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
 
             <EditText
-                android:id="@+id/phoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:hint="@string/enter_your_phone_number"
-                android:importantForAutofill="no"
-                android:inputType="phone|number"
-                android:textSize="20sp"/>
-
-            <EditText
-                android:id="@+id/email"
+                android:id="@+id/insEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -103,7 +95,7 @@
 
 
             <EditText
-                android:id="@+id/passwordFirst"
+                android:id="@+id/insPasswordFirst"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -114,7 +106,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/passwordSecond"
+                android:id="@+id/insPasswordSecond"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -126,13 +118,14 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="200dp" />
 
 
         </LinearLayout>
     </ScrollView>
 
     <Button
+        android:id="@+id/insRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
