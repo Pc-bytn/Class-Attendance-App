@@ -10,4 +10,19 @@
     <string name="student_logo">student logo</string>
     <string name="instructor">Instructor</string>
     <string name="student">Student</string>
+    <string name="your_email">Your Email Address</string>
+    <string name="your_password">Your Password</string>
+    <string name="log_in">Log in</string>
+    <string name="signup_full_name">Enter Your Full Name</string>
+    <string name="signup_initial_name">Full Name With Initials</string>
+    <string name="type_your_password">Type Your Password</string>
+    <string name="sign_up_logo">Sign up logo</string>
+    <string name="register">Register</string>
+    <string name="confirm_your_password">Confirm Your Password</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="enter_your_address">Enter Your Address</string>
+    <string name="enter_your_phone_number">Enter Your Phone Number</string>
+    <string name="enter_your_nic">Enter Your NIC Number</string>
+    <string name="instructor_log_in">Instructor Log in</string>
+    <string name="student_log_in">Student Log in</string>
 </resources>

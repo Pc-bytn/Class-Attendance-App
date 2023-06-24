@@ -15,7 +15,8 @@
         android:backgroundTint="@color/cardview_shadow_start_color"
         android:text="@string/instructor_login"
         android:textColor="@color/main_pg_btn_color"
-        android:textSize="24sp"
+        android:textSize="27sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
         android:backgroundTint="@color/cardview_shadow_start_color"
         android:text="@string/instructor_register"
         android:textColor="@color/main_pg_btn_color"
-        android:textSize="18sp"
+        android:textSize="23sp"
         app:layout_constraintStart_toStartOf="@+id/btn_InstructorLogin"
         app:layout_constraintTop_toBottomOf="@+id/btn_InstructorLogin" />
 

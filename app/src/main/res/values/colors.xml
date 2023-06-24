@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_pg_btn_color">#C10859</color>
+    <color name="buttonColor">#CDDC39</color>
 </resources>
