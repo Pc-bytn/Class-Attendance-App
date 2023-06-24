@@ -25,4 +25,5 @@
     <string name="enter_your_nic">Enter Your NIC Number</string>
     <string name="instructor_log_in">Instructor Log in</string>
     <string name="student_log_in">Student Log in</string>
+    <string name="save">Save</string>
 </resources>
