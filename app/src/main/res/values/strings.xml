@@ -28,4 +28,8 @@
     <string name="attendance">Mark Attendance</string>
     <string name="log_out">Log out</string>
     <string name="subject">Enter Your Subject</string>
+    <string name="hi">Hi ! </string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="reset_attandance">Reset Attandance</string>
+    <string name="name_will_show_in_here">name will show in here</string>
 </resources>

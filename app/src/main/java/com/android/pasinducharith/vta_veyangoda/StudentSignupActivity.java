@@ -102,7 +102,7 @@ public class StudentSignupActivity extends AppCompatActivity {
             loading.show();
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    "https://script.google.com/macros/s/AKfycbzmHsMCbLbts1_cWjOD6fxf4kEUKt9gYDWF5jHbCHiy17C5Ri3AKqI6A24NI1s3GGW7/exec",
+                    "https://script.google.com/macros/s/AKfycbwjknmEqrpUH6BotoiN5IzXpyWdHfati-y72djB_qh_cfS4_IG3mW8Fq-QqXDAFlJ4/exec",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -155,6 +155,7 @@ public class StudentSignupActivity extends AppCompatActivity {
 
                     Map<String, Object> userInfo = new HashMap<>();
                     userInfo.put("nicNo", stdnicNo);
+                    userInfo.put("nameWithInitials", stdNameWithInitials);
                     userInfo.put("isUser", "1");
 
                     df.set(userInfo);

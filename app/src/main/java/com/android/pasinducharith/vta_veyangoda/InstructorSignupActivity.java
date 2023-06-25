@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,7 +48,13 @@ public class InstructorSignupActivity extends AppCompatActivity {
         registerInstructor = findViewById(R.id.insRegister);
 
 
-        instructorRegister();
+        registerInstructor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                instructorRegister();
+            }
+        });
+
 
     }
 
@@ -74,6 +83,8 @@ public class InstructorSignupActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     FirebaseUser user = fAuth.getCurrentUser();
                     Toast.makeText(InstructorSignupActivity.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
+
+
                     DocumentReference df = fStore.collection("Users").document(user.getUid());
 
                     Map<String, Object> userInfo = new HashMap<>();
@@ -82,10 +93,8 @@ public class InstructorSignupActivity extends AppCompatActivity {
                     userInfo.put("subject", subjt);
                     userInfo.put("isAdmin", "1");
 
-
-
-
                     df.set(userInfo);
+
 
                     if (!isFinishing() && loading.isShowing()) {
                         loading.dismiss();
@@ -108,11 +117,6 @@ public class InstructorSignupActivity extends AppCompatActivity {
 
 
         }
-
-
-
-
-
 
 
     }
