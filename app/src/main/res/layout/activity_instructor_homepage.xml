@@ -46,18 +46,19 @@
 
     <Button
         android:id="@+id/resetAttendance"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:backgroundTint="#AD1451"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:backgroundTint="#4870C3"
         android:text="@string/reset_attandance"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailCard"
-        app:layout_constraintVertical_bias="0.598" />
+        app:layout_constraintVertical_bias="0.349" />
 
     <Button
         android:id="@+id/logOutInstructor"
@@ -71,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.874" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

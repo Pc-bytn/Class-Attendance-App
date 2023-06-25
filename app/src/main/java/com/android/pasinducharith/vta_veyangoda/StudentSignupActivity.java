@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -168,11 +169,14 @@ public class StudentSignupActivity extends AppCompatActivity {
                     finish();
 
 
+
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(StudentSignupActivity.this, "Failed to register.", Toast.LENGTH_SHORT).show();
+                    Log.d("registerFailCatch", "onFailure: "+ e.getMessage());
                     if (!isFinishing() && loading.isShowing()) {
                         loading.dismiss();
                     }

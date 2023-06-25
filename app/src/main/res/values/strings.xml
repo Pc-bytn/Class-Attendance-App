@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Attendance Marker</string>
     <string name="welcome_text">Welcome</string>
-    <string name="to_vta_veyangoda">to VTA Veyangoda</string>
+    <string name="attendance_marking_system">Attendance Marking System</string>
     <string name="instructor_register">Instructor Register</string>
     <string name="student_register">Student Register</string>
     <string name="instructor_login">Instructor Login</string>
@@ -32,4 +32,6 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="reset_attandance">Reset Attandance</string>
     <string name="name_will_show_in_here">name will show in here</string>
+    <string name="to">to</string>
+    <string name="copyright">© pasindu charith @2022 ICT5 batch - vta veyangoda</string>
 </resources>
