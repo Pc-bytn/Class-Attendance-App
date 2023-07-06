@@ -118,6 +118,5 @@ public class InstructorSignupActivity extends AppCompatActivity {
 
         }
 
-
     }
 }

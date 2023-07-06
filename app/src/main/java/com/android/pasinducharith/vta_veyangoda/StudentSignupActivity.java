@@ -72,13 +72,13 @@ public class StudentSignupActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerStudents();
+                sendFirebaseRequestAndAppRequest();
             }
         });
 
     }
 
-    public void registerStudents() {
+    public void registerStudentsGSheet() {
         //Data sending Method
 
         String stdFname = fName.getText().toString().trim();
@@ -134,6 +134,7 @@ public class StudentSignupActivity extends AppCompatActivity {
                 }
             };
 
+
             int socketTimeOut = 50000;// u can change this .. here it is 50 seconds
 
             RetryPolicy retryPolicy = new DefaultRetryPolicy(socketTimeOut, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
@@ -143,50 +144,57 @@ public class StudentSignupActivity extends AppCompatActivity {
 
             queue.add(stringRequest);
 
-            // FIREBASE SECTION ////////////////////////////
-            fAuth = FirebaseAuth.getInstance();
-            fStore = FirebaseFirestore.getInstance();
 
-            fAuth.createUserWithEmailAndPassword(stdEmail, stdFirstPsw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    FirebaseUser user = fAuth.getCurrentUser();
-                    Toast.makeText(StudentSignupActivity.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
-                    DocumentReference df = fStore.collection("Users").document(user.getUid());
-
-                    Map<String, Object> userInfo = new HashMap<>();
-                    userInfo.put("nicNo", stdnicNo);
-                    userInfo.put("nameWithInitials", stdNameWithInitials);
-                    userInfo.put("isUser", "1");
-
-                    df.set(userInfo);
-
-                    if (!isFinishing() && loading.isShowing()) {
-                        loading.dismiss();
-                    }
-
-                    startActivity(new Intent(getApplicationContext(), StudentHomepageActivity.class));
-                    finish();
-
-
-
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(StudentSignupActivity.this, "Failed to register.", Toast.LENGTH_SHORT).show();
-                    Log.d("registerFailCatch", "onFailure: "+ e.getMessage());
-                    if (!isFinishing() && loading.isShowing()) {
-                        loading.dismiss();
-                    }
-                }
-            });
         } else {
             Toast.makeText(this, "Password Is Not Matching Or All Fields Not Filled", Toast.LENGTH_SHORT).show();
         }
 
 
+    }
+
+    public void sendFirebaseRequestAndAppRequest(){
+        // FIREBASE SECTION ////////////////////////////
+        String stdEmail = email.getText().toString().trim();
+        String stdFirstPsw = pswFirst.getText().toString().trim();
+        String stdnicNo = nicNo.getText().toString().trim();
+        String stdNameWithInitials = nameWithInitials.getText().toString().trim();
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        fAuth.createUserWithEmailAndPassword(stdEmail, stdFirstPsw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                FirebaseUser user = fAuth.getCurrentUser();
+                Toast.makeText(StudentSignupActivity.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
+                DocumentReference df = fStore.collection("Users").document(user.getUid());
+
+                Map<String, Object> userInfo = new HashMap<>();
+                userInfo.put("nicNo", stdnicNo);
+                userInfo.put("nameWithInitials", stdNameWithInitials);
+                userInfo.put("isUser", "1");
+
+                df.set(userInfo);
+                registerStudentsGSheet();
+
+                if (!isFinishing() && loading.isShowing()) {
+                    loading.dismiss();
+                }
+
+                startActivity(new Intent(getApplicationContext(), StudentHomepageActivity.class));
+                finish();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(StudentSignupActivity.this, "Failed to register.", Toast.LENGTH_SHORT).show();
+                Log.d("registerFailCatch", "onFailure: "+ e.getMessage());
+                if (!isFinishing() && loading.isShowing()) {
+                    loading.dismiss();
+                }
+            }
+        });
     }
 
 

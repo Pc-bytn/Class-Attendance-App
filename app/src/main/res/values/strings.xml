@@ -15,7 +15,7 @@
     <string name="log_in">Log in</string>
     <string name="signup_full_name">Enter Your Full Name</string>
     <string name="signup_initial_name">Full Name With Initials</string>
-    <string name="type_your_password">Type Your Password</string>
+    <string name="type_your_password">Password (minimum 6 characters)</string>
     <string name="sign_up_logo">Sign up logo</string>
     <string name="register">Register</string>
     <string name="confirm_your_password">Confirm Your Password</string>
