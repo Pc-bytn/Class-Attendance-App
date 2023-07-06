@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "137764057428",
+    "project_id": "vta-veyangoda-attendance",
+    "storage_bucket": "vta-veyangoda-attendance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137764057428:android:fd7a2a968cf5c996b3d8c1",
+        "android_client_info": {
+          "package_name": "com.android.pasinducharith.vta_veyangoda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137764057428-a7lvc6k2shv93dljc8hi4me4pusb8ef3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbIM0SFHpKTcM-DW4viXLqV9klZwIfmrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137764057428-a7lvc6k2shv93dljc8hi4me4pusb8ef3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
