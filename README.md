@@ -1,4 +1,4 @@
-# VTA-VEYANGODA
+# Class-Attendance-App
 Student Registration and Attendants marking app in Android 
 
 ## Intro
